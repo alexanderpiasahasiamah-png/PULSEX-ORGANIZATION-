@@ -31,27 +31,40 @@
     <p>&copy; 2026 PulseX Organization. All rights reserved.</p>
   </footer>
 
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script>
-    const payButton = document.getElementById('payButton');
-    payButton.addEventListener('click', function(){
-      let amountInput = document.getElementById('donationAmount').value;
-      if(amountInput === "" || amountInput <= 0){
-        alert('Please enter a valid donation amount.');
-        return;
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  const payButton = document.getElementById('payButton');
+
+  payButton.addEventListener('click', function(){
+
+    let amountInput = document.getElementById('donationAmount').value;
+
+    if(amountInput === "" || amountInput <= 0){
+      alert('Please enter a valid donation amount.');
+      return;
+    }
+
+    let amountInKobo = amountInput * 100;
+
+    let handler = PaystackPop.setup({
+      key: 'pk_live_faf6f9f19d90d6164cbd6b0f6d68db05b36606a8',
+      email: 'alexanderpiasahasiamah@gmail.com',
+      amount: amountInKobo,
+      currency: 'GHS',
+      channels: ['mobile_money'], // 👈 THIS FORCES MOBILE MONEY ONLY
+      ref: 'PULSEX_' + Math.floor(Math.random() * 1000000000 + 1),
+
+      callback: function(response){
+        alert('Payment successful! Reference: ' + response.reference);
+      },
+
+      onClose: function(){
+        alert('Payment cancelled.');
       }
-      let amountInKobo = amountInput * 100;
-      let handler = PaystackPop.setup({
-        key: 'pk_live_faf6f9f19d90d6164cbd6b0f6d68db05b36606a8',
-        email: 'alexanderpiasahasiamah@gmail.com',
-        amount: amountInKobo,
-        currency: 'GHS',
-        ref: '' + Math.floor(Math.random() * 1000000000 + 1),
-        callback: function(response){ alert('Payment successful! Reference: ' + response.reference); },
-        onClose: function(){ alert('Payment cancelled.'); }
-      });
-      handler.openIframe();
     });
-  </script>
+
+    handler.openIframe();
+  });
+</script>
 </body>
 </html>
