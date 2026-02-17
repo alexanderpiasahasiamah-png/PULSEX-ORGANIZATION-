@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseX - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html"><img src="images/logo.png" alt="PulseX Logo"></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="health.html">AI Healthcare</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="donate.html">Donate</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h2>Welcome to PulseX Organization</h2>
+    <p>Innovating in AI, Healthcare, Energy, and Sustainability for a brighter future.</p>
+    <a href="#donate" class="btn">Donate Now</a>
+  </header>
+
+  <section>
+    <h2>About PulseX</h2>
+    <p>PulseX Organization is dedicated to developing cutting-edge AI solutions, sustainable energy projects, and innovative healthcare technologies to empower communities worldwide.</p>
+  </section>
+
+  <!-- Donations Section -->
+  <section id="donate">
+    <h2>Support PulseX</h2>
+    <p>Your donation helps us build AI healthcare solutions, expand our organization, and empower communities worldwide.</p>
+    <input type="number" id="donationAmount" placeholder="Enter amount in GHS">
+    <br>
+    <button type="button" class="btn" id="payButton">Donate Now</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 PulseX Organization. All rights reserved.</p>
+  </footer>
+
+  <!-- Paystack JS -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    const payButton = document.getElementById('payButton');
+    payButton.addEventListener('click', function(){
+      let amountInput = document.getElementById('donationAmount').value;
+      if(amountInput === "" || amountInput <= 0){
+        alert('Please enter a valid donation amount.');
+        return;
+      }
+      let amountInKobo = amountInput * 100;
+      let handler = PaystackPop.setup({
+        key: 'YOUR_PUBLIC_KEY', // replace with your Paystack public key
+        email: 'alexanderpiasahasiamah@gmail.com',
+        amount: amountInKobo,
+        currency: 'GHS',
+        ref: '' + Math.floor(Math.random() * 1000000000 + 1),
+        callback: function(response){ alert('Payment successful! Reference: ' + response.reference); },
+        onClose: function(){ alert('Payment cancelled.'); }
+      });
+      handler.openIframe();
+    });
+  </script>
+
+</body>
+</html>
