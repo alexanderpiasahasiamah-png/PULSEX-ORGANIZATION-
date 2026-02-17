@@ -1,0 +1,93 @@
+/* ===== Global Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #ffffff);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* ===== Headings ===== */
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #1a73e8; /* blue */
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ===== Paragraphs ===== */
+p {
+  color: #444;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* ===== Buttons ===== */
+button, a.button {
+  display: inline-block;
+  background: linear-gradient(45deg, #e91e63, #ff4081); /* red/pink gradient */
+  color: #fff;
+  padding: 12px 25px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+button:hover, a.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== Links ===== */
+a {
+  color: #1a73e8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #e91e63;
+}
+
+/* ===== Card / Box Effect ===== */
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background: #1a73e8;
+  color: white;
+  margin-top: 50px;
+  border-radius: 10px 10px 0 0;
+}
